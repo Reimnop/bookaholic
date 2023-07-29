@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply box-border;
+}
+
 body {
-    @apply bg-top text-text font-roboto box-border scroll-smooth;
+    @apply bg-top text-text font-roboto scroll-smooth;
 }
 
 a {

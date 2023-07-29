@@ -1,24 +1,25 @@
 <script>
-	import LinkButton from "./LinkButton.svelte";
+	import HeaderButton from "./HeaderButton.svelte";
     import Placeholder from "./Placeholder.svelte";
 </script>
 
 <div class="w-full h-28 flex gap-12 bg-surface shadow-lg">
     <!-- Logo -->
-    <a class="h-full p-6 no-underline" href="/">
-        <Placeholder title="Logo" class="h-full aspect-[3]" />
+    <a class="h-full grid place-items-center px-6 no-underline" href="/">
+        <Placeholder title="Logo" class="w-48 h-16" />
     </a>
 
     <!-- Links -->
     <div class="flex gap-6 py-8">
-        <LinkButton class="grid place-items-center px-4" href="/">
-            <h6>Trang chủ 🏠</h6>
-        </LinkButton>
-        <LinkButton class="grid place-items-center px-4" href="/friend">
-            <h6>Bạn bè 🧑‍🤝‍🧑</h6>
-        </LinkButton>
-        <LinkButton class="grid place-items-center px-4" href="/search">
-            <h6>Tìm sách 📚</h6>
-        </LinkButton>
+        <HeaderButton title="Trang chủ 🏠" icon="🏠" href="/" />
+        <HeaderButton title="Bạn bè 🧑‍🤝‍🧑" icon="🧑‍🤝‍🧑" href="/friends" />
+        <HeaderButton title="Tìm sách 📚" icon="📚" href="/books" />
+    </div>
+
+    <!-- User profile -->
+    <div class="ml-auto m-6 grid place-items-center">
+        <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/signin">
+            <h6>Đăng nhập</h6>
+        </a>
     </div>
 </div>
