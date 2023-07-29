@@ -46,7 +46,7 @@ export class Database {
         const postgresPassword = process.env.POSTGRES_PASSWORD;
 
         if (!postgresHost || !postgresPort || !postgresDatabase || !postgresUser || !postgresPassword) {
-            throw new Error('Database environment variables not set!');
+            throw new Error('Database environment variables not set');
         }
 
         const authInfo: DatabaseAuthInfo = {
