@@ -9,6 +9,10 @@
 
 <Surface class="mx-auto w-fit" title="Đăng ký">
     <form class="w-96 flex flex-col gap-4" method="post" action="?/register">
+        {#if form?.error}
+            <p class="text-red-500">{form.error}</p>
+        {/if}
+
         <label for="username">
             Tên đăng nhập
             <InputText class="w-full" id="username" name="username" required />
