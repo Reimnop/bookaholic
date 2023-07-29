@@ -25,6 +25,7 @@ async function register({request}: {request: Request}) {
         }
 
         // Create the user profile
+        // TODO: Don't forget to salt the password hash
         const passwordHashDigest = sha256(password);
         const passwordHash = Base64.stringify(passwordHashDigest);
         const userProfile: UserProfile = {
