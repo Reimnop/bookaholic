@@ -1,12 +1,12 @@
 import { Database } from "$lib/Database";
-import type { ClientUserProfile } from "$lib/types/ClientUserProfile.js";
+import type { ClientUserProfile } from "$lib/types/ClientUserProfile";
 import type { Cookies } from "@sveltejs/kit";
 
 export async function load({cookies}: {cookies: Cookies}): Promise<ClientUserProfile | null> {
     // Check if the user is signed in
     const sessionToken = cookies.get('session_token');
 
-    if (!sessionToken) {
+    if (!sessionToken || sessionToken.length === 0) {
         return null;
     }
 

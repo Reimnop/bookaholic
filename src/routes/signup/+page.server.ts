@@ -1,5 +1,5 @@
-import { Database } from '$lib/Database.js';
-import type { UserProfile } from '$lib/types/UserProfile.js';
+import { Database } from '$lib/Database';
+import type { UserProfile } from '$lib/types/UserProfile';
 import { fail, redirect } from '@sveltejs/kit';
 import bcrypt from 'bcrypt';
 

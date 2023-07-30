@@ -1,4 +1,3 @@
-
 <script lang="ts">
     export let clazz: string = "";
     export {clazz as class};

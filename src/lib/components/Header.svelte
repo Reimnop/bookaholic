@@ -21,8 +21,15 @@
 
     <!-- User profile -->
     <div class="ml-auto m-6 grid place-items-center">
-        <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/signin">
-            <h6>{userProfile?.username ?? "Đăng nhập"}</h6>
-        </a>
+        {#if userProfile}
+            <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/dashboard">
+                <h6>{userProfile.username}</h6>
+            </a>
+        {:else}
+            <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/signin">
+                <h6>Đăng nhập</h6>
+            </a>
+        {/if}
+        
     </div>
 </div>
