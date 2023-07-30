@@ -1,6 +1,9 @@
-<script>
+<script lang="ts">
+	import type { ClientUserProfile } from "$lib/types/ClientUserProfile";
 	import HeaderButton from "./HeaderButton.svelte";
     import Placeholder from "./Placeholder.svelte";
+
+    export let userProfile: ClientUserProfile | null = null;
 </script>
 
 <div class="w-full h-28 flex gap-12 bg-surface shadow-lg">
@@ -19,7 +22,7 @@
     <!-- User profile -->
     <div class="ml-auto m-6 grid place-items-center">
         <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/signin">
-            <h6>Đăng nhập</h6>
+            <h6>{userProfile?.username ?? "Đăng nhập"}</h6>
         </a>
     </div>
 </div>
