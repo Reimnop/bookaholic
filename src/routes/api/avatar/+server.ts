@@ -4,6 +4,12 @@ import fs from 'fs';
 export function GET({url}: {url: URL}) {
     const name = url.searchParams.get('name');
 
+    if (!name) {
+        return fail(400, {
+            error: 'Missing name parameter'
+        });
+    }
+
     // Check if file exists
     const path = `${process.cwd()}/static/avatars/${name}.png`;
     if (!fs.existsSync(path)) {
