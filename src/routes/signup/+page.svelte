@@ -19,7 +19,7 @@
         </label>
         <label for="password">
             Mật khẩu
-            <InputText class="w-full" id="password" name="password" type="password" required />
+            <InputText class="w-full" id="password" name="password" password required />
         </label>
         <FormButton>Đăng ký</FormButton>
     </form>

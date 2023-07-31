@@ -3,7 +3,7 @@
 	import type { ClientPageData } from "$lib/types/ClientPageData";
     import "../app.css";
 
-    export let data: ClientPageData | null = null;
+    export let data: ClientPageData;
 </script>
 
 <!-- Background -->

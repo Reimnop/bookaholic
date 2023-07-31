@@ -19,7 +19,7 @@
         </label>
         <label for="password">
             Mật khẩu
-            <InputText class="w-full" id="password" name="password" type="password" required />
+            <InputText class="w-full" id="password" name="password" password required />
         </label>
         <div>
             <a class="float-left" href="/signup">Đăng ký</a>
