@@ -1,8 +1,9 @@
 import { Database } from "$lib/Database";
 import type { ClientUserProfile } from "$lib/types/ClientUserProfile";
+import type { ClientPageData } from "$lib/types/ClientPageData";
 import type { Cookies } from "@sveltejs/kit";
 
-export async function load({cookies}: {cookies: Cookies}): Promise<ClientUserProfile | null> {
+export async function load({cookies}: {cookies: Cookies}): Promise<ClientPageData | null> {
     // Check if the user is signed in
     const sessionToken = cookies.get('session_token');
 
@@ -11,6 +12,8 @@ export async function load({cookies}: {cookies: Cookies}): Promise<ClientUserPro
     }
 
     // Connect to the database
+    let clientUserProfile: ClientUserProfile | null = null;
+
     let db: Database | null = null;
     try {
         db = Database.createFromEnvironment();
@@ -23,13 +26,17 @@ export async function load({cookies}: {cookies: Cookies}): Promise<ClientUserPro
             return null;
         }
 
-        return {
+        clientUserProfile = {
             username: userProfile.username,
             creation_date: userProfile.creation_date
-        };
+        }
     } catch (error: any) {
         return null;
     } finally {
         await db?.disconnect();
+    }
+
+    return {
+        userProfile: clientUserProfile
     }
 }

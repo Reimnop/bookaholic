@@ -1,7 +1,7 @@
 <script>
 	import Placeholder from "$lib/components/Placeholder.svelte";
-
 </script>
+
 <svelte:head>
     <title>Trang chủ</title>
 </svelte:head>

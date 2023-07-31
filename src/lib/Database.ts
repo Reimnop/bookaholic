@@ -1,6 +1,6 @@
-import type { DatabaseAuthInfo } from "./types/DatabaseAuthInfo";
-import { Client } from "pg";
-import type { UserProfile } from "./types/UserProfile";
+import type { DatabaseAuthInfo } from './types/DatabaseAuthInfo';
+import { Client } from 'pg';
+import type { UserProfile } from './types/UserProfile';
 
 export class Database {
     client: Client;
@@ -28,7 +28,23 @@ export class Database {
             'SELECT * FROM users WHERE username = $1',
             [username]
         );
-        return result.rowCount === 0 ? null : result.rows[0];
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+
+        const row = result.rows[0];
+
+        if (!row.username || !row.creation_date || !row.password_hash) {
+            return null;
+        }
+
+        return {
+            username: row.username,
+            creation_date: row.creation_date,
+            password_hash: row.password_hash,
+            session_token: row.session_token ?? null
+        };
     }
 
     async queryUserProfileFromSessionToken(sessionToken: string): Promise<UserProfile | null> {
@@ -36,7 +52,23 @@ export class Database {
             'SELECT * FROM users WHERE session_token = $1',
             [sessionToken]
         );
-        return result.rowCount === 0 ? null : result.rows[0];
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+
+        const row = result.rows[0];
+
+        if (!row.username || !row.creation_date || !row.password_hash || !row.session_token) {
+            return null;
+        }
+
+        return {
+            username: row.username,
+            creation_date: row.creation_date,
+            password_hash: row.password_hash,
+            session_token: row.session_token
+        };
     }
 
     async createUserProfile(userProfile: UserProfile) {
