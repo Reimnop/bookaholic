@@ -32,10 +32,12 @@ async function signin({cookies, request}: {cookies: Cookies, request: Request}) 
 
         // Update the session token in the database
         await database.updateSessionToken(username, sessionToken);
-    } catch (error: any) {
-        return fail(400, {
-            error: error.message
-        });
+    } catch (error) {
+        if (error instanceof Error) {
+            return fail(400, {
+                error: error.message
+            });
+        }
     } finally {
         await database?.disconnect();
     }

@@ -43,10 +43,12 @@ async function register({request}: {request: Request}) {
 
         // Save the user profile
         await db.createUserProfile(userProfile);
-    } catch (error: any) {
-        return fail(400, {
-            error: error.message
-        });
+    } catch (error) {
+        if (error instanceof Error) {
+            return fail(400, {
+                error: error.message
+            });
+        }
     } finally {
         await db?.disconnect();
     }

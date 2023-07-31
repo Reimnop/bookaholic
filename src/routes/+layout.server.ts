@@ -1,9 +1,9 @@
 import { Database } from "$lib/Database";
 import type { ClientUserProfile } from "$lib/types/ClientUserProfile";
 import type { ClientPageData } from "$lib/types/ClientPageData";
-import type { Cookies } from "@sveltejs/kit";
+import { fail, type Cookies, ActionFailure } from "@sveltejs/kit";
 
-export async function load({cookies}: {cookies: Cookies}): Promise<ClientPageData | null> {
+export async function load({cookies}: {cookies: Cookies}): Promise<ClientPageData | ActionFailure<{ error: string }> | null> {
     // Check if the user is signed in
     const sessionToken = cookies.get('session_token');
 
@@ -30,8 +30,12 @@ export async function load({cookies}: {cookies: Cookies}): Promise<ClientPageDat
             username: userProfile.username,
             creation_date: userProfile.creation_date
         }
-    } catch (error: any) {
-        return null;
+    } catch (error) {
+        if (error instanceof Error) {
+            return fail(400, {
+                error: error.message
+            });
+        }
     } finally {
         await db?.disconnect();
     }
