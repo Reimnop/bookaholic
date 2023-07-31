@@ -9,7 +9,6 @@
 </script>
 
 <AuthPage userProfile={data.userProfile} let:userProfile={profile}>
-    <!-- The if statement isn't needed, but it's here so TS doesn't complain about possible null -->
     {#if profile}
         <Surface class="mx-auto w-fit" title="Thông tin tài khoản">
             <!-- Account information form -->
