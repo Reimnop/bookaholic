@@ -20,10 +20,11 @@
     </div>
 
     <!-- User profile -->
-    <div class="ml-auto m-6 grid place-items-center">
+    <div class="ml-auto mr-6 grid place-items-center">
         {#if userProfile}
-            <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/dashboard">
+            <a class="no-underline rounded-full border-2 border-button flex items-center gap-4 py-2 px-6 duration-150 hover:bg-button" href="/dashboard">
                 <h6>{userProfile.username}</h6>
+                <img width="48" height="48" class="rounded-full mr-[-1rem]" src="/api/avatar?name={userProfile.username}" alt="Avatar" />
             </a>
         {:else}
             <a class="no-underline rounded-full border-2 border-button py-2 px-6 duration-150 hover:bg-button" href="/signin">
