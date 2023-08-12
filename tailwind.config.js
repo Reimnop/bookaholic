@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-top': '#161616',
-        'bg-bottom': '#212121',
-        'text': '#ffffff',
-        'inactive': '#a0a0a0',
-        'surface': '#5c483f',
-        'accent': '#755b4f',
-        'accent-light': '#aa8174',
-        'button': '#aa8174'
+        'bg-top': '#ede1dc',
+        'bg-bottom': '#e0cdc4',
+        'text': '#000000',
+        'inactive': '#3f3f3f',
+        'surface': '#9c8377',
+        'accent': '#b2baa8',
+        'accent-light': '#f4ffe6',
+        'button': '#c49a89'
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif']
